@@ -2887,7 +2887,13 @@ class PlayState extends MusicBeatState
 		setOnLuas('curDecStep', curDecStep);
 		setOnLuas('curDecBeat', curDecBeat);
 
-		scoreTxt.text = 'Score: ' + songScore if (isStoryMode) { + ' | Week Misses: ' + campaignMisses } else { + ' | Misses: ' + songMisses } + ' | Rating: ' + ratingName;
+                var pizda:String = ' | Misses: ';
+                var ebanina:Int = songMisses;
+                if (isStoryMode) {
+                    pizda = ' | Week Misses: ';
+                    ebanina = campaignMisses;
+                }
+		scoreTxt.text = 'Score: ' + songScore + pizda + ebanina + ' | Rating: ' + ratingName;
 		if(ratingName != '?')
 			scoreTxt.text += ' (' + Highscore.floorDecimal(ratingPercent * 100, 2) + '%)' + ' - ' + ratingFC;
 
